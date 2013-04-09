@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://se.api.anpdm.com/v1/subscribers/mailinglist/thisisnogood/queue
+    body:
+      encoding: UTF-8
+      string: ! '[{"Email":"johndoe@example.com","Name":"John Doe"},{"Email":"janedoe@example.com","Name":"Jane
+        Doe"}]'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.8.6
+      Authorization:
+      - <KEY>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      cache-control:
+      - private
+      content-length:
+      - '74'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      date:
+      - Tue, 12 Mar 2013 15:10:09 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Code":-2,"Message":"MailinglistId must be greater than 0","Result":null}'
+    http_version: 
+  recorded_at: Tue, 12 Mar 2013 15:10:04 GMT
+recorded_with: VCR 2.4.0

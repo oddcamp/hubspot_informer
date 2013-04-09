@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://se.api.anpdm.com/v1/subscribers/mailinglist/<MAILING_LIST>/queue
+    body:
+      encoding: UTF-8
+      string: ! '[{"Email":"johndoe@example.com","Name":"John Doe"},{"Email":"janedoe@example.com","Name":"Jane
+        Doe"}]'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.8.6
+      Authorization:
+      - <KEY>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - private
+      content-length:
+      - '230'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      date:
+      - Tue, 12 Mar 2013 15:10:06 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Code":1,"Message":"Creating subscribers will be handled shortly...","Result":{"OperationGuid":"9b087599-e26d-47f8-932b-03092fb91fd0","PollURL":"http:\/\/se.api.anpdm.com\/data\/9b087599-e26d-47f8-932b-03092fb91fd0_status.json"}}'
+    http_version: 
+  recorded_at: Tue, 12 Mar 2013 15:10:01 GMT
+recorded_with: VCR 2.4.0
