@@ -28,14 +28,13 @@ class HubspotInformer
   def submit params
     params[:hs_context] = hs_context
     response = @conn.post do |req|
-      req.url "uploads/form/v2/#{@portal_id}/:#{@form_guid}"
+      req.url "uploads/form/v2/#{@portal_id}/#{@form_guid}"
       req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
       req.body = URI.encode_www_form params
     end
     unless response.status == 204
       raise HubspotInformerError.new("HubspotInformer API Error: #{response.body} (status code #{response.status})")
     end
-    JSON.parse response.body
   end
 
   def hs_context
