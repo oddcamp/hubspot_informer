@@ -12,27 +12,29 @@ end
 describe "HubspotInformer" do
   it "adds a subscriber to a list" do
     VCR.use_cassette('add_subscriber') do
-      #api_key = ENV['APSIS_API_KEY']
-      #mailing_list = ENV['APSIS_TEST_MAILING_LIST']
-      #apsis = Apsis.new(api_key)
-      #response = apsis.create_subscribers(mailing_list, [
-      #  { 'Email' => 'johndoe@example.com', 'Name' => 'John Doe' },
-      #  { 'Email' => 'janedoe@example.com', 'Name' => 'Jane Doe' }
-      #])
-      #response['Code'].should eql 1
+      portal_id = ENV['HUBSPOT_TEST_PORTAL_ID']
+      form_guid = ENV['HUBSPOT_TEST_FORM_GUID']
+      puts "#{portal_id}/#{form_guid}"
+      hubspot = HubspotInformer.new(
+        portal_id: portal_id,
+        form_guid: form_guid,
+      )
+      params = { firstname: 'John', lastname: 'Doe', email: 'john.doe@example.com' }
+      response = hubspot.submit params
+      response.should eql nil
     end
   end
 
   it "raises an exception when an error HTTP status code is returned" do
     VCR.use_cassette('raise_exception') do
-      #api_key = ENV['APSIS_API_KEY']
-      #mailing_list = 'thisisnogood'
-      #apsis = Apsis.new(api_key)
-      #lambda {
-      #  apsis.create_subscribers(mailing_list, [
-      #  { 'Email' => 'johndoe@example.com', 'Name' => 'John Doe' },
-      #  { 'Email' => 'janedoe@example.com', 'Name' => 'Jane Doe' }
-      #])}.should raise_error(Apsis::ApsisError)
+      portal_id = ENV['HUBSPOT_TEST_PORTAL_ID']
+      form_guid = 'thisisnogood'
+      hubspot = HubspotInformer.new(
+        portal_id: portal_id,
+        form_guid: form_guid,
+      )
+      params = { firstname: 'John', lastname: 'Doe', email: 'john.doe@example.com' }
+      lambda { hubspot.submit params }.should raise_error(HubspotInformer::HubspotInformerError)
     end
   end
 end

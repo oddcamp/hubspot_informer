@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://forms.hubspot.com/uploads/form/v2/<PORTAL_ID>/thisisnogood
+    body:
+      encoding: US-ASCII
+      string: firstname=John&lastname=Doe&email=john.doe%40example.com&hs_context=%7B%22hutk%22%3A%22%22%2C%22ipAddress%22%3A%22%22%2C%22pageUrl%22%3A%22%22%2C%22pageTitle%22%3A%22%22%7D
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v0.8.6
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      access-control-allow-credentials:
+      - 'false'
+      content-type:
+      - text/html;charset=utf-8
+      date:
+      - Wed, 10 Apr 2013 11:55:33 GMT
+      server:
+      - Apache-Coyote/1.1
+      content-length:
+      - '952'
+      connection:
+      - Close
+    body:
+      encoding: US-ASCII
+      string: ! '<html><head><title>Apache Tomcat/6.0.30 - Error report</title><style><!--H1
+        {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;}
+        H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;}
+        H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;}
+        BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;}
+        B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;}
+        P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A
+        {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP
+        Status 404 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Status report</p><p><b>message</b>
+        <u></u></p><p><b>description</b> <u>The requested resource () is not available.</u></p><HR
+        size="1" noshade="noshade"><h3>Apache Tomcat/6.0.30</h3></body></html>'
+    http_version: 
+  recorded_at: Wed, 10 Apr 2013 11:55:30 GMT
+recorded_with: VCR 2.4.0

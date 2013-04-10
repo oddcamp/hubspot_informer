@@ -1,9 +1,7 @@
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr'
   c.hook_into :faraday
-  c.filter_sensitive_data('<KEY>') do |interaction|
-    interaction.request.headers['Authorization'].first
-  end
-  c.filter_sensitive_data('<MAILING_LIST>') { ENV['APSIS_TEST_MAILING_LIST'] }
+  c.filter_sensitive_data('<PORTAL_ID>') { ENV['HUBSPOT_TEST_PORTAL_ID'] }
+  c.filter_sensitive_data('<FORM_GUID>') { ENV['HUBSPOT_TEST_FORM_GUID'] }
 end
 
