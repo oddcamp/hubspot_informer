@@ -14,7 +14,6 @@ describe "HubspotInformer" do
     VCR.use_cassette('add_subscriber') do
       portal_id = ENV['HUBSPOT_TEST_PORTAL_ID']
       form_guid = ENV['HUBSPOT_TEST_FORM_GUID']
-      puts "#{portal_id}/#{form_guid}"
       hubspot = HubspotInformer.new(
         portal_id: portal_id,
         form_guid: form_guid,
