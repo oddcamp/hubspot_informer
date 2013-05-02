@@ -4,6 +4,7 @@
 .config
 .yardoc
 .ruby-version
+.rbenv-vars
 bin
 Gemfile.lock
 InstalledFiles
