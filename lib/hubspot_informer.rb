@@ -32,7 +32,9 @@ class HubspotInformer
       req.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
       req.body = URI.encode_www_form params
     end
-    unless response.status == 204
+    if response.status == 204
+      response
+    else
       raise HubspotInformerError.new("HubspotInformer API Error: #{response.body} (status code #{response.status})")
     end
   end
