@@ -32,7 +32,7 @@ class HubspotInformer
       req.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
       req.body = URI.encode_www_form params
     end
-    if response.status == 204
+    if response.status == 204 || 302 #302 is redirect with a location to the "thank you" page
       response
     else
       raise HubspotInformerError.new("HubspotInformer API Error: #{response.body} (status code #{response.status})")
